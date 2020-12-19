@@ -1,0 +1,79 @@
+body {
+	margin: 0;
+	padding: 1em;
+	box-sizing: border-box;
+	display: flex;
+	height: 100vh;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: #fff;
+	font-family: arial, sans-serif;
+}
+
+.login-container {
+	max-width: 325px;
+	height: 325px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background: white;
+	padding: 80px;
+	border-radius: 15px;
+	box-shadow: rgba(128, 128, 128, 0.2) 1px 1px 10px,
+		rgba(128, 128, 128, 0.2) -1px -1px 10px;
+}
+
+.heading-title {
+	text-align: center;
+	font-size: 26px;
+	margin: 0;
+	padding: 0;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.label {
+	font-weight: 500;
+	font-size: 18px;
+}
+
+.input {
+	margin-top: 5px;
+	margin-bottom: 20px;
+	padding: 8px;
+	font-size: 16px;
+	border-radius: 5px;
+}
+
+.password-constraints {
+	padding-bottom: 15px;
+	font-size: 14px;
+}
+
+.submit-button {
+	padding: 8px;
+	font-size: 16px;
+	font-weight: 600;
+	border: none;
+	border-radius: 5px;
+}
+
+/* Show password button */
+
+button#toggle-password {
+	background: none;
+	border: none;
+	cursor: pointer;
+	/* Media query isn't shown here. */
+	font-size: var(--mobile-font-size);
+	font-weight: 300;
+	padding: 0;
+	/* Display at the top right of the container */
+	position: absolute;
+	right: 0;
+}

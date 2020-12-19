@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="main.css" />
+		<title>Sign In</title>
+	</head>
+	<body>
+		<container class="login-container">
+			<section class="heading-section">
+				<h3 class="heading-title">Sign In</h3>
+			</section>
+			<section class="form-section">
+				<form class="form">
+					<label for="email" class="label email-label">Email</label>
+					<input
+						class="input email-input"
+						autocomplete="email"
+						type="email"
+						autofocus="true"
+					/>
+					<div>
+						<label for="password" class="label password-label">Password</label>
+						<button
+							class="toggle-password-button"
+							id="toggle-password"
+							type="button"
+							aria-label="Show password as plain text. Warning: this will display your password on the screen."
+						>
+							Show password
+						</button>
+					</div>
+					<input
+						class="input password-input"
+						id="password"
+						name="password"
+						type="password"
+						autocomplete="current-password"
+						aria-describedby="password-constraints"
+						required
+					/>
+					<div class="password-constraints" id="password-constraints">
+						Eight or more characters with a mix of letters, numbers and symbols.
+					</div>
+					<button class="button submit-button" type="submit">Sign In</button>
+				</form>
+			</section>
+		</container>
+		<script>
+			const passwordInput = document.getElementById('password');
+			const togglePasswordButton = document.getElementById('toggle-password');
+
+			togglePasswordButton.addEventListener('click', togglePassword);
+
+			function togglePassword() {
+				if (passwordInput.type === 'password') {
+					passwordInput.type = 'text';
+					togglePasswordButton.textContent = 'Hide password';
+					togglePasswordButton.setAttribute('aria-label', 'Hide password.');
+				} else {
+					passwordInput.type = 'password';
+					togglePasswordButton.textContent = 'Show password';
+					togglePasswordButton.setAttribute(
+						'aria-label',
+						'Show password as plain text. ' +
+							'Warning: this will display your password on the screen.'
+					);
+				}
+			}
+		</script>
+	</body>
+</html>
