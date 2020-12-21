@@ -9,6 +9,13 @@ body {
 	justify-content: center;
 	background: #fff;
 	font-family: arial, sans-serif;
+	background: rgb(44, 39, 120);
+	background: linear-gradient(
+		162deg,
+		rgba(44, 39, 120, 1) 0%,
+		rgba(6, 207, 177, 1) 100%
+	);
+	color: white;
 }
 
 .login-container {
@@ -20,13 +27,18 @@ body {
 	background: white;
 	padding: 80px;
 	border-radius: 15px;
-	box-shadow: rgba(128, 128, 128, 0.2) 1px 1px 10px,
-		rgba(128, 128, 128, 0.2) -1px -1px 10px;
+	background: rgba(255, 255, 255, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .heading-title {
 	text-align: center;
-	font-size: 26px;
+	font-size: 28px;
+	font-weight: 800;
 	margin: 0;
 	padding: 0;
 }
@@ -48,6 +60,16 @@ form {
 	padding: 8px;
 	font-size: 16px;
 	border-radius: 5px;
+	background: rgba(255, 255, 255, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.toggle-password-button {
+	color: white;
 }
 
 .password-constraints {
