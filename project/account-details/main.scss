@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Nunito', sans-serif;
+	background: #403d51;
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+	background: #1f1d2b;
+	border-radius: 20px;
+	margin: 20px;
+	height: 95vh;
+}
+
+.drawer {
+	padding: 3em;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.user-profile {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.user-info h3 {
+	color: #ababaf;
+}
+
+.user-info p {
+	color: #5c5b65;
+	font-size: 0.8em;
+}
+
+.profile-image {
+	margin: 0;
+	padding: 0;
+	width: 65px;
+	height: 65px;
+	border-radius: 50%;
+	margin: 10px;
+}
+
+.menu {
+	color: #5c5b65;
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	justify-content: center;
+	padding: 1em 0;
+}
+
+.menu h4 {
+	margin: 1em 0;
+	font-size: 1.2em;
+}
+
+.menu a {
+	color: #5c5b65;
+	text-decoration: none;
+	font-weight: 700;
+	padding: 1.2em 0;
+}
+
+.main-pane {
+	background: #252836;
+	border-radius: 20px;
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	color: #ababaf;
+}
+
+.settings-section {
+	padding: 1em 2em;
+}
+
+.settings-title {
+	font-size: 1.4em;
+	color: #efeff0;
+}
+
+.complete-profile-section {
+	background: #216fed;
+	color: #efeff0;
+	padding: 1em;
+	border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	width: 350px;
+}
+
+.top-section {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.complete-info h4 {
+	font-weight: 800;
+	margin: 0;
+	padding: 0;
+	line-height: 1.8em;
+}
+
+.complete-info p {
+	margin: 0;
+	font-size: 14px;
+	line-height: 1.8em;
+}
+
+.complete-profile-button {
+	text-align: center;
+	color: #216fed;
+	background: #efeff0;
+	margin: 1em;
+	padding: 0.75em;
+	border-radius: 25px;
+	font-weight: 700;
+}
+
+// -- vars
+$bg-color: #efeff0;
+$default-size: 3em;
+$label-font-size: $default-size / 4;
+$label-font-size-redo: $default-size * 4;
+
+// -- mixins
+@mixin size($width, $height) {
+	height: $height;
+	width: $width;
+}
+
+@mixin draw-progress($progress, $color) {
+	.pie {
+		.half-circle {
+			border-color: $color;
+		}
+
+		.left-side {
+			transform: rotate($progress * 3.6deg);
+		}
+
+		@if $progress <= 50 {
+			.right-side {
+				display: none;
+			}
+		} @else {
+			clip: rect(auto, auto, auto, auto);
+
+			.right-side {
+				transform: rotate(180deg);
+			}
+		}
+	}
+}
+
+@mixin draw-progress--solid($progress, $color, $bg-color) {
+	background: linear-gradient(to right, $color 50%, $bg-color 50%);
+
+	&:before {
+		@if $progress <= 50 {
+			background: $bg-color;
+			transform: rotate((100 - (50 - $progress)) / 100 * 360deg * -1);
+		} @else {
+			background: $color;
+			transform: rotate((100 - $progress) / 100 * 360deg);
+		}
+	}
+}
+
+// -- selectors
+
+.set-size {
+	font-size: 10em;
+}
+
+.charts-container {
+	&:after {
+		clear: both;
+		content: '';
+		display: table;
+	}
+}
+
+.pie-wrapper {
+	@include size($default-size, $default-size);
+	float: left;
+	margin: 15px;
+	position: relative;
+
+	&:nth-child(3n + 1) {
+		clear: both;
+	}
+
+	.pie {
+		@include size(100%, 100%);
+		clip: rect(0, $default-size, $default-size, $default-size / 2);
+		left: 0;
+		position: absolute;
+		top: 0;
+
+		.half-circle {
+			@include size(100%, 100%);
+			border: ($default-size / 10) solid #3498db;
+			border-radius: 50%;
+			clip: rect(0, $default-size / 2, $default-size, 0);
+			left: 0;
+			position: absolute;
+			top: 0;
+		}
+	}
+
+	.label {
+		background: $bg-color;
+		border-radius: 50%;
+		bottom: $label-font-size-redo / 10;
+		color: #ecf0f1;
+		cursor: default;
+		display: block;
+		font-size: $label-font-size;
+		left: $label-font-size-redo / 10;
+		line-height: $label-font-size-redo * 0.7;
+		position: absolute;
+		right: $label-font-size-redo / 10;
+		text-align: center;
+		top: -2.35em;
+
+		.smaller {
+			color: #bdc3c7;
+			font-size: 0.45em;
+			padding-bottom: 20px;
+			vertical-align: super;
+		}
+	}
+
+	.shadow {
+		@include size(100%, 100%);
+		border: $default-size / 10 solid #efeff0;
+		border-radius: 50%;
+	}
+
+	&.style-2 {
+		.label {
+			background: none;
+			color: #efeff0;
+
+			.smaller {
+				color: #efeff0;
+			}
+		}
+	}
+
+	&.progress-45 {
+		@include draw-progress(45, #1abc9c);
+	}
+}
